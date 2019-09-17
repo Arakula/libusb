@@ -3595,6 +3595,9 @@ static int hid_open(int sub_api, struct libusb_device_handle *dev_handle)
 				hid_handle = CreateFileA(priv->usb_interface[i].path, 0, FILE_SHARE_WRITE | FILE_SHARE_READ,
 					NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED, NULL);
 				if (hid_handle == INVALID_HANDLE_VALUE) {
+#if 1
+					usbi_err(ctx, "could not open device %s (interface %d): %s (ignored)", priv->path, i, windows_error_str(0));
+#else
 					usbi_err(ctx, "could not open device %s (interface %d): %s", priv->path, i, windows_error_str(0));
 					switch (GetLastError()) {
 					case ERROR_FILE_NOT_FOUND: // The device was disconnected
@@ -3604,6 +3607,7 @@ static int hid_open(int sub_api, struct libusb_device_handle *dev_handle)
 					default:
 						return LIBUSB_ERROR_IO;
 					}
+#endif
 				}
 				priv->usb_interface[i].restricted_functionality = true;
 			}

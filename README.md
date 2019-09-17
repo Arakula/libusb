@@ -34,3 +34,4 @@ http://mailing-list.libusb.info
 ## Changes in Arakula's version:
 
 .) added Visual Studio 2008 project files
+.) added temporary fix described in https://github.com/libusb/libusb/issues/619
