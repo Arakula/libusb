@@ -30,3 +30,7 @@ http://mailing-list.libusb.info
 - Chris Dickens <christopher.a.dickens@gmail.com>
 
 (Please use the mailing list rather than mailing developers directly)
+
+## Changes in Arakula's version:
+
+.) added Visual Studio 2008 project files
